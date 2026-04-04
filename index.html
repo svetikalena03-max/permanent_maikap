@@ -7,14 +7,17 @@
   <meta name="description" content="Естественный перманентный макияж в Куровском, ТЦ «Светлана». Брови, губы, межресничка. Консультация без обязательств.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="animations.js" defer></script>
 </head>
 <body class="site">
   <header class="site-header">
     <div class="container inner">
-      <a href="#" class="logo">Ирина Чистякова <span>· перманент</span></a>
+      <a href="#top" class="logo">
+        <span class="logo-script">Ирина Чистякова</span>
+        <span class="logo-tagline">Мастер по перманентному макияжу</span>
+      </a>
       <nav class="nav-cta">
         <a class="btn btn-primary btn-sm" href="#consult">Записаться</a>
       </nav>
@@ -24,7 +27,16 @@
   <main>
     <!-- Блок 1 -->
     <section class="hero" id="top">
-      <div class="container hero-grid">
+      <div class="container">
+        <header class="hero-brand js-reveal">
+          <img class="hero-brand-emblem" src="images/brand-emblem.png" alt="" width="220" height="160" decoding="async">
+          <p class="hero-brand-name">Ирина Чистякова</p>
+          <div class="hero-brand-lines" aria-label="Специализация">
+            <span>Мастер по перманентному макияжу</span>
+            <span>Услуги стилиста-визажиста</span>
+          </div>
+        </header>
+        <div class="hero-grid">
         <div class="hero-copy">
           <h1>Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»</h1>
           <p class="hero-lead">Аккуратно подбираю форму и оттенок под ваши черты лица. Посмотрите работы — это мягкий, живой результат.</p>
@@ -54,6 +66,35 @@
               decoding="async"
             >
           </figure>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-poster" aria-label="Основные направления">
+      <div class="container">
+        <div class="services-poster-grid js-reveal-row">
+          <article class="services-poster-card">
+            <div class="services-poster-circle">
+              <img src="images/works/brovi-1.png" alt="Работа по бровям" width="400" height="400" loading="lazy" decoding="async">
+            </div>
+            <h3 class="services-poster-title">Брови</h3>
+            <p class="services-poster-text">Будут правильной формы, насыщенного оттенка с эффектом пушистости и густоты.</p>
+          </article>
+          <article class="services-poster-card">
+            <div class="services-poster-circle">
+              <img src="images/works/guby-1.png" alt="Работа по губам" width="400" height="400" loading="lazy" decoding="async">
+            </div>
+            <h3 class="services-poster-title">Губы</h3>
+            <p class="services-poster-text">Обретут контур и приятный оттенок. Возможно устранение асимметрии, если имеется.</p>
+          </article>
+          <article class="services-poster-card">
+            <div class="services-poster-circle">
+              <img src="images/works/glaza-1.png" alt="Работа по векам" width="400" height="400" loading="lazy" decoding="async">
+            </div>
+            <h3 class="services-poster-title">Веки</h3>
+            <p class="services-poster-text">Взгляд станет ярче и выразительнее. Ресницы будут выглядеть гуще.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -339,13 +380,17 @@
     <section class="final-cta" id="consult">
       <div class="container js-reveal">
         <h2>Можно начать с консультации</h2>
-        <div class="prose js-reveal">
+        <div class="prose">
           <p>Вы спокойно поймёте, подходит ли вам процедура и какой результат можно получить.</p>
           <p>Без давления и спешки.</p>
         </div>
         <p class="location">
           <span class="location-icon" aria-hidden="true">📍</span>
           <span>Куровское, ТЦ «Светлана», 3 этаж, кабинет 10</span>
+        </p>
+        <p class="booking-lead">По предварительной записи:</p>
+        <p class="phone-block">
+          <a href="tel:+79031551435" class="phone-link">+7 (903) 155-14-35</a>
         </p>
         <div class="final-actions">
           <a class="btn btn-primary" href="https://t.me/">Записаться на консультацию</a>
@@ -361,7 +406,8 @@
 
   <footer class="site-footer">
     <div class="container js-reveal">
-      <p>Ирина Чистякова · перманентный макияж · Куровское</p>
+      <p class="footer-line">Ирина Чистякова · перманентный макияж · Куровское</p>
+      <p class="footer-phone"><a href="tel:+79031551435">+7 (903) 155-14-35</a></p>
     </div>
   </footer>
 </body>
