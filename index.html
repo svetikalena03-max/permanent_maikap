@@ -19,6 +19,7 @@
         <span class="logo-tagline">Мастер по перманентному макияжу</span>
       </a>
       <nav class="nav-cta">
+        <a class="btn btn-ghost btn-sm nav-link-request" href="#request">Заявка</a>
         <a class="btn btn-primary btn-sm" href="#consult">Записаться</a>
       </nav>
     </div>
@@ -373,6 +374,73 @@
             <p>От 1 до 3 часов, в зависимости от зоны.</p>
           </details>
         </div>
+      </div>
+    </section>
+
+    <section class="request-section bg-white" id="request" aria-labelledby="request-title">
+      <div class="container">
+        <div class="section-head js-reveal">
+          <h2 id="request-title">Оставить заявку</h2>
+          <p>Укажите ФИО и телефон — перезвоню или отвечу в мессенджере, чтобы согласовать удобное время</p>
+        </div>
+        <!-- Замените пустые data-telegram-user и data-vk-screen на свои логины (без @). Max настраивать не нужно. -->
+        <form
+          class="request-form js-reveal"
+          id="request-form"
+          novalidate
+          data-telegram-user=""
+          data-vk-screen=""
+        >
+          <div class="request-form-fields">
+            <label class="request-field">
+              <span class="request-label">ФИО <abbr title="обязательно">*</abbr></span>
+              <input
+                type="text"
+                name="fullname"
+                id="request-fullname"
+                required
+                autocomplete="name"
+                placeholder="Иванова Мария Сергеевна"
+                maxlength="120"
+              >
+            </label>
+            <label class="request-field">
+              <span class="request-label">Телефон <abbr title="обязательно">*</abbr></span>
+              <input
+                type="tel"
+                name="phone"
+                id="request-phone"
+                required
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+7 (903) 155-14-35"
+                maxlength="32"
+              >
+            </label>
+          </div>
+          <fieldset class="request-messenger-fieldset">
+            <legend class="request-label">Куда отправить заявку</legend>
+            <div class="request-messenger-options" role="radiogroup" aria-label="Мессенджер">
+              <label class="request-messenger-option">
+                <input type="radio" name="request-messenger" value="telegram">
+                <span class="request-messenger-card">Telegram</span>
+              </label>
+              <label class="request-messenger-option">
+                <input type="radio" name="request-messenger" value="vk">
+                <span class="request-messenger-card">ВКонтакте</span>
+              </label>
+              <label class="request-messenger-option">
+                <input type="radio" name="request-messenger" value="max" checked>
+                <span class="request-messenger-card">Max</span>
+              </label>
+            </div>
+          </fieldset>
+          <p class="request-form-hint" id="request-form-error" role="alert" hidden></p>
+          <div class="request-form-actions">
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          </div>
+          <p class="request-form-note">Откроется выбранный мессенджер с уже заполненным текстом заявки. Для Telegram и ВКонтакте в коде страницы должны быть указаны ваши логины (см. комментарий над формой). Max откроет окно отправки текста без дополнительной настройки.</p>
+        </form>
       </div>
     </section>
 
