@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="animations.js" defer></script>
 </head>
 <body class="site">
   <header class="site-header">
@@ -60,15 +61,15 @@
     <!-- Блок 2 -->
     <section class="bg-white" id="works">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Как выглядит результат</h2>
           <p>Без фильтров и сильной обработки — так это выглядит в жизни</p>
         </div>
 
-        <div class="gallery-block">
+        <div class="gallery-block js-reveal">
           <h3>Брови</h3>
           <p class="gallery-caption">Мягкая форма без жёстких линий</p>
-          <div class="photo-row">
+          <div class="photo-row js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img src="images/works/brovi-1.png" alt="Результат перманента бровей, мягкая форма" width="800" height="1000" loading="lazy" decoding="async">
@@ -90,10 +91,10 @@
           </div>
         </div>
 
-        <div class="gallery-block">
+        <div class="gallery-block js-reveal">
           <h3>Губы</h3>
           <p class="gallery-caption">Естественный оттенок, без эффекта помады</p>
-          <div class="photo-row photo-row--tight">
+          <div class="photo-row photo-row--tight js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img src="images/works/guby-1.png" alt="Аккуратный оттенок и контур губ" width="900" height="900" loading="lazy" decoding="async">
@@ -103,10 +104,10 @@
           </div>
         </div>
 
-        <div class="gallery-block">
+        <div class="gallery-block js-reveal">
           <h3>Глаза / межресничка</h3>
           <p class="gallery-caption">Выразительность без яркой стрелки</p>
-          <div class="photo-row">
+          <div class="photo-row js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img src="images/works/glaza-1.png" alt="Перманентный вековой макияж с мягкой растушёвкой" width="900" height="900" loading="lazy" decoding="async">
@@ -122,33 +123,33 @@
           </div>
         </div>
 
-        <p class="gallery-hint"><strong>Важно:</strong> на сайте указаны подписи «сразу после» и «после заживления» — так честнее показывать реальный результат.</p>
+        <p class="gallery-hint js-reveal"><strong>Важно:</strong> на сайте указаны подписи «сразу после» и «после заживления» — так честнее показывать реальный результат.</p>
       </div>
     </section>
 
     <!-- Блок 3 -->
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Когда перманент — это удобно</h2>
         </div>
-        <ul class="list-check centered">
+        <ul class="list-check centered js-reveal">
           <li>не хочется тратить время на ежедневный макияж</li>
           <li>сложно добиться аккуратной формы бровей</li>
           <li>хочется добавить мягкий оттенок губам</li>
           <li>нужен более выразительный взгляд без косметики</li>
         </ul>
-        <p class="prose after-list">Иногда — просто чтобы выглядеть ухоженно без лишних усилий.</p>
+        <p class="prose after-list js-reveal">Иногда — просто чтобы выглядеть ухоженно без лишних усилий.</p>
       </div>
     </section>
 
     <!-- Блок 4 -->
     <section class="bg-soft">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Если вам важна естественность — мы совпадём</h2>
         </div>
-        <div class="prose">
+        <div class="prose js-reveal">
           <p>Я не работаю в стиле яркого, плотного перманента. Моя задача — аккуратно подчеркнуть ваши черты.</p>
           <p>Результат выглядит как ваш — только чуть аккуратнее.</p>
         </div>
@@ -158,11 +159,11 @@
     <!-- Блок 5 -->
     <section class="bg-white">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Как проходит работа</h2>
         </div>
         <div class="steps-wrap">
-        <div class="steps">
+        <div class="steps js-reveal-row">
           <div class="step"><span>Консультация — обсуждаем результат</span></div>
           <div class="step"><span>Подбор формы и оттенка</span></div>
           <div class="step"><span>Процедура</span></div>
@@ -176,25 +177,25 @@
     <!-- Блок 6 -->
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Безопасность и аккуратность</h2>
         </div>
-        <ul class="list-check centered">
+        <ul class="list-check centered js-reveal">
           <li>используются одноразовые материалы</li>
           <li>рабочее место обрабатывается после каждого клиента</li>
           <li>соблюдаются базовые нормы чистоты</li>
         </ul>
-        <p class="prose after-list-tight">Работаю аккуратно и без спешки.</p>
+        <p class="prose after-list-tight js-reveal">Работаю аккуратно и без спешки.</p>
       </div>
     </section>
 
     <!-- Блок 7 -->
     <section class="bg-white">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Ирина Чистякова</h2>
         </div>
-        <div class="prose">
+        <div class="prose js-reveal">
           <p>Опыт работы — более 5 лет.</p>
           <p>Работаю с перманентом, когда важно сохранить естественность. Подбираю форму индивидуально — без шаблонов.</p>
           <p>Показываю реальные работы, чтобы вы понимали результат заранее.</p>
@@ -205,26 +206,26 @@
     <!-- Блок 8 -->
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Что вы получаете</h2>
         </div>
-        <ul class="list-check centered">
+        <ul class="list-check centered js-reveal">
           <li>аккуратные брови без «тату-эффекта»</li>
           <li>мягкий оттенок губ</li>
           <li>более выразительный взгляд</li>
           <li>ухоженный вид без макияжа</li>
         </ul>
-        <p class="prose after-list">Окружающие обычно не замечают процедуру — но вы видите разницу.</p>
+        <p class="prose after-list js-reveal">Окружающие обычно не замечают процедуру — но вы видите разницу.</p>
       </div>
     </section>
 
     <!-- Блок 9 -->
     <section class="bg-white">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Если вы сомневаетесь — это нормально</h2>
         </div>
-        <div class="objections">
+        <div class="objections js-reveal-row">
           <div class="objection">
             <p class="objection-fear">Будет слишком ярко</p>
             <span class="objection-arrow" aria-hidden="true">→</span>
@@ -252,10 +253,10 @@
     <!-- Блок 10 -->
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Стоимость процедур</h2>
         </div>
-        <table class="price-table">
+        <table class="price-table js-reveal">
           <thead>
             <tr>
               <th>Процедура</th>
@@ -281,18 +282,18 @@
             </tr>
           </tbody>
         </table>
-        <p class="price-note">Коррекция через 1–1,5 месяца — 50% стоимости. В цену входят подбор формы, процедура и рекомендации по уходу.</p>
+        <p class="price-note js-reveal">Коррекция через 1–1,5 месяца — 50% стоимости. В цену входят подбор формы, процедура и рекомендации по уходу.</p>
       </div>
     </section>
 
     <!-- Блок 11 -->
     <section class="bg-white" id="reviews">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Отзывы клиентов</h2>
           <p>Сюда можно вставить скриншоты отзывов</p>
         </div>
-        <div class="reviews">
+        <div class="reviews js-reveal-row">
           <div class="review-card review-placeholder">Место для скрина отзыва</div>
           <div class="review-card">
             <p>Делала брови, переживала, что будет ярко. В итоге очень аккуратно, как свои — только лучше</p>
@@ -310,10 +311,10 @@
     <!-- Блок 12 -->
     <section>
       <div class="container">
-        <div class="section-head">
+        <div class="section-head js-reveal">
           <h2>Ответы на вопросы</h2>
         </div>
-        <div class="faq-list">
+        <div class="faq-list js-reveal-row">
           <details class="faq-item">
             <summary>Сколько держится перманент?</summary>
             <p>Зависит от кожи и ухода, обсуждаем на консультации.</p>
@@ -336,9 +337,9 @@
 
     <!-- Блок 13 -->
     <section class="final-cta" id="consult">
-      <div class="container">
+      <div class="container js-reveal">
         <h2>Можно начать с консультации</h2>
-        <div class="prose">
+        <div class="prose js-reveal">
           <p>Вы спокойно поймёте, подходит ли вам процедура и какой результат можно получить.</p>
           <p>Без давления и спешки.</p>
         </div>
@@ -359,7 +360,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container js-reveal">
       <p>Ирина Чистякова · перманентный макияж · Куровское</p>
     </div>
   </footer>
