@@ -12,6 +12,10 @@
   <script src="animations.js" defer></script>
 </head>
 <body class="site">
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true" hidden>
+    <span class="custom-cursor-dot"></span>
+    <span class="custom-cursor-ring"></span>
+  </div>
   <header class="site-header">
     <div class="container inner">
       <a href="#top" class="logo">
@@ -27,28 +31,29 @@
 
   <main>
     <!-- Блок 1 -->
-    <section class="hero" id="top">
+    <section class="hero hero--reveal" id="top">
       <div class="container">
         <div class="hero-grid">
         <div class="hero-copy">
-          <h1>Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»</h1>
-          <p class="hero-lead">Аккуратно подбираю форму и оттенок под ваши черты лица. Посмотрите работы — это мягкий, живой результат.</p>
-          <p class="hero-note">Можно начать с консультации — без обязательств.</p>
-          <p class="location">
+          <h1 class="reveal">Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»</h1>
+          <p class="hero-lead reveal" style="--delay: 0.1s;">Аккуратно подбираю форму и оттенок под ваши черты лица. Посмотрите работы — это мягкий, живой результат.</p>
+          <p class="hero-note reveal" style="--delay: 0.15s;">Можно начать с консультации — без обязательств.</p>
+          <p class="location reveal" style="--delay: 0.2s;">
             <span class="location-icon" aria-hidden="true">📍</span>
             <span>Куровское, ТЦ «Светлана», 3 этаж, кабинет 10</span>
           </p>
-          <div class="hero-actions">
+          <div class="hero-actions reveal" style="--delay: 0.25s;">
             <a class="btn btn-primary" href="#consult">Записаться на консультацию</a>
           </div>
-          <div class="hero-links">
+          <div class="hero-links reveal" style="--delay: 0.3s;">
             <a class="btn btn-ghost btn-sm" href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
             <a class="btn btn-ghost btn-sm" href="https://vk.me/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
             <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">Max</a>
           </div>
-          <p class="btn-microcopy">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
+          <p class="btn-microcopy reveal" style="--delay: 0.35s;">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual reveal" style="--delay: 0.18s;">
+          <div class="hero-visual-inner">
           <div class="hero-visual-glow" aria-hidden="true"></div>
           <figure class="hero-aside hero-aside-photo">
             <div class="hero-aside-frame">
@@ -63,6 +68,7 @@
             </div>
             <figcaption class="hero-photo-caption">Ирина Чистякова — мастер перманентного макияжа</figcaption>
           </figure>
+          </div>
         </div>
         </div>
       </div>
@@ -70,10 +76,10 @@
 
     <section class="services-poster" aria-label="Основные направления">
       <div class="container">
-        <div class="services-poster-grid js-reveal-row">
+        <div class="services-poster-grid" data-reveal-stagger="0.08" data-reveal-start="0.03">
           <article class="services-poster-card">
             <div class="services-poster-circle">
-              <img src="images/works/brovi-1.png" alt="Работа по бровям" width="400" height="400" loading="lazy" decoding="async">
+              <img class="image-lift" src="images/works/brovi-1.png" alt="Работа по бровям" width="400" height="400" loading="lazy" decoding="async">
             </div>
             <p class="services-poster-photo-caption">Брови — сразу после процедуры</p>
             <h3 class="services-poster-title">Брови</h3>
@@ -81,7 +87,7 @@
           </article>
           <article class="services-poster-card">
             <div class="services-poster-circle">
-              <img src="images/works/guby-1.png" alt="Работа по губам" width="400" height="400" loading="lazy" decoding="async">
+              <img class="image-lift" src="images/works/guby-1.png" alt="Работа по губам" width="400" height="400" loading="lazy" decoding="async">
             </div>
             <p class="services-poster-photo-caption">Губы — мягкое заполнение цвета, после заживления</p>
             <h3 class="services-poster-title">Губы</h3>
@@ -89,7 +95,7 @@
           </article>
           <article class="services-poster-card">
             <div class="services-poster-circle">
-              <img src="images/works/glaza-1.png" alt="Работа по векам" width="400" height="400" loading="lazy" decoding="async">
+              <img class="image-lift" src="images/works/glaza-1.png" alt="Работа по векам" width="400" height="400" loading="lazy" decoding="async">
             </div>
             <p class="services-poster-photo-caption">Межресничка — аккуратное усиление взгляда</p>
             <h3 class="services-poster-title">Веки</h3>
@@ -114,22 +120,22 @@
         <div class="gallery-block js-reveal">
           <h3>Брови</h3>
           <p class="gallery-caption">Мягкая форма без жёстких линий</p>
-          <div class="photo-row js-reveal-row">
+          <div class="photo-row" data-reveal-stagger="0.08" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-1.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/brovi-1.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Брови — сразу после процедуры</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-2.png" alt="Брови — после заживления" width="800" height="1000" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/brovi-2.png" alt="Брови — после заживления" width="800" height="1000" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Брови — после заживления</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-3.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/brovi-3.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Брови — сразу после процедуры</figcaption>
             </figure>
@@ -139,10 +145,10 @@
         <div class="gallery-block js-reveal">
           <h3>Губы</h3>
           <p class="gallery-caption">Естественный оттенок, без эффекта помады</p>
-          <div class="photo-row photo-row--tight js-reveal-row">
+          <div class="photo-row photo-row--tight" data-reveal-stagger="0.1" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/guby-1.png" alt="Губы — мягкое заполнение цвета, после заживления" width="900" height="900" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/guby-1.png" alt="Губы — мягкое заполнение цвета, после заживления" width="900" height="900" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Губы — мягкое заполнение цвета, после заживления</figcaption>
             </figure>
@@ -152,16 +158,16 @@
         <div class="gallery-block js-reveal">
           <h3>Глаза / межресничка</h3>
           <p class="gallery-caption">Выразительность без яркой стрелки</p>
-          <div class="photo-row js-reveal-row">
+          <div class="photo-row" data-reveal-stagger="0.08" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/glaza-1.png" alt="Межресничка — аккуратное усиление взгляда" width="900" height="900" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/glaza-1.png" alt="Межресничка — аккуратное усиление взгляда" width="900" height="900" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Межресничка — аккуратное усиление взгляда</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/glaza-2.png" alt="Межресничка — после заживления" width="800" height="1000" loading="lazy" decoding="async">
+                <img class="image-lift" src="images/works/glaza-2.png" alt="Межресничка — после заживления" width="800" height="1000" loading="lazy" decoding="async">
               </div>
               <figcaption class="photo-label photo-label--descriptive">Межресничка — после заживления</figcaption>
             </figure>
@@ -227,7 +233,7 @@
           <h2>Как проходит работа</h2>
         </div>
         <div class="steps-wrap">
-        <div class="steps js-reveal-row">
+        <div class="steps" data-reveal-stagger="0.1" data-reveal-start="0.05">
           <div class="step"><span>Консультация — обсуждаем результат</span></div>
           <div class="step"><span>Подбор формы и оттенка</span></div>
           <div class="step"><span>Процедура</span></div>

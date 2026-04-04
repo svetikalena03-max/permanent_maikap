@@ -3,10 +3,39 @@
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function initRevealStagger() {
+    document.querySelectorAll("[data-reveal-stagger]").forEach(function (root) {
+      var step = parseFloat(root.getAttribute("data-reveal-stagger"), 10);
+      var start = parseFloat(root.getAttribute("data-reveal-start") || "0", 10);
+      if (isNaN(step)) step = 0.1;
+      if (isNaN(start)) start = 0;
+      var sel = root.getAttribute("data-reveal-target");
+      var list = sel ? root.querySelectorAll(sel) : root.children;
+      Array.prototype.forEach.call(list, function (node, i) {
+        node.classList.add("reveal");
+        node.style.setProperty("--delay", start + i * step + "s");
+      });
+    });
+  }
+
+  initRevealStagger();
+
   function revealAll() {
     document.querySelectorAll(".js-reveal, .js-reveal-row").forEach(function (el) {
       el.classList.add("is-visible");
     });
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      el.classList.add("is-revealed");
+    });
+  }
+
+  function unlockReveal(el) {
+    if (el.classList.contains("js-reveal") || el.classList.contains("js-reveal-row")) {
+      el.classList.add("is-visible");
+    }
+    if (el.classList.contains("reveal")) {
+      el.classList.add("is-revealed");
+    }
   }
 
   var header = document.querySelector(".site-header");
@@ -25,21 +54,20 @@
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
+          unlockReveal(entry.target);
           observer.unobserve(entry.target);
         });
       },
       { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.08 }
     );
 
-    document.querySelectorAll(".js-reveal, .js-reveal-row").forEach(function (el) {
+    document.querySelectorAll(".js-reveal, .js-reveal-row, .reveal").forEach(function (el) {
       observer.observe(el);
     });
 
-    /* Параллакс только для блока с фото в hero */
     var hero = document.querySelector(".hero");
-    var heroVisual = document.querySelector(".hero-visual");
-    if (hero && heroVisual) {
+    var heroInner = document.querySelector(".hero-visual-inner");
+    if (hero && heroInner) {
       var parallaxTick = false;
       function parallax() {
         parallaxTick = false;
@@ -48,7 +76,7 @@
         var maxShift = 28;
         var y = window.scrollY * 0.045;
         if (y > maxShift) y = maxShift;
-        heroVisual.style.transform = "translate3d(0, " + y + "px, 0)";
+        heroInner.style.transform = "translate3d(0, " + y + "px, 0)";
       }
       function onScrollParallax() {
         if (!parallaxTick) {
@@ -58,6 +86,70 @@
       }
       parallax();
       window.addEventListener("scroll", onScrollParallax, { passive: true });
+    }
+
+    var canCustomCursor =
+      window.matchMedia("(pointer: fine)").matches && window.matchMedia("(hover: hover)").matches;
+
+    if (canCustomCursor) {
+      var cursorEl = document.getElementById("custom-cursor");
+      if (cursorEl) {
+        cursorEl.removeAttribute("hidden");
+        cursorEl.hidden = false;
+        document.body.classList.add("has-custom-cursor");
+
+        var dot = cursorEl.querySelector(".custom-cursor-dot");
+        var ring = cursorEl.querySelector(".custom-cursor-ring");
+        var mx = 0;
+        var my = 0;
+        var rx = 0;
+        var ry = 0;
+        var cursorRaf = 0;
+        var hoverInteractive = false;
+
+        function setHover(on) {
+          if (hoverInteractive === on) return;
+          hoverInteractive = on;
+          cursorEl.classList.toggle("is-hover", on);
+        }
+
+        function cursorFrame() {
+          cursorRaf = 0;
+          rx += (mx - rx) * 0.22;
+          ry += (my - ry) * 0.22;
+          if (dot) dot.style.transform = "translate3d(" + mx + "px," + my + "px,0)";
+          if (ring) ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0)";
+          if (Math.abs(mx - rx) > 0.35 || Math.abs(my - ry) > 0.35) {
+            cursorRaf = requestAnimationFrame(cursorFrame);
+          }
+        }
+
+        function queueCursorFrame() {
+          if (!cursorRaf) cursorRaf = requestAnimationFrame(cursorFrame);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            mx = e.clientX;
+            my = e.clientY;
+            var t = e.target;
+            setHover(
+              !!(
+                t &&
+                t.closest &&
+                t.closest(
+                  "a, button, input, textarea, select, summary, label, [role='button'], .btn"
+                )
+              )
+            );
+            queueCursorFrame();
+          },
+          { passive: true }
+        );
+
+        cursorFrame();
+      }
     }
   }
 
