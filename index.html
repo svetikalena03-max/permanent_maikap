@@ -29,14 +29,6 @@
     <!-- Блок 1 -->
     <section class="hero" id="top">
       <div class="container">
-        <header class="hero-brand js-reveal">
-          <img class="hero-brand-emblem" src="images/brand-emblem.png" alt="" width="220" height="160" decoding="async">
-          <p class="hero-brand-name">Ирина Чистякова</p>
-          <div class="hero-brand-lines" aria-label="Специализация">
-            <span>Мастер по перманентному макияжу</span>
-            <span>Услуги стилиста-визажиста</span>
-          </div>
-        </header>
         <div class="hero-grid">
         <div class="hero-copy">
           <h1>Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»</h1>
@@ -50,22 +42,26 @@
             <a class="btn btn-primary" href="#consult">Записаться на консультацию</a>
           </div>
           <div class="hero-links">
-            <a class="btn btn-ghost btn-sm" href="https://t.me/" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">Написать в Max</a>
+            <a class="btn btn-ghost btn-sm" href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="btn btn-ghost btn-sm" href="https://vk.me/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">Max</a>
           </div>
-          <p class="personal-note">Можно просто задать вопрос — отвечаю лично</p>
+          <p class="btn-microcopy">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
         </div>
         <div class="hero-visual">
           <div class="hero-visual-glow" aria-hidden="true"></div>
           <figure class="hero-aside hero-aside-photo">
-            <img
-              src="images/irina-chistyakova.png"
-              alt="Ирина Чистякова — мастер перманентного макияжа"
-              width="900"
-              height="1200"
-              loading="eager"
-              decoding="async"
-            >
+            <div class="hero-aside-frame">
+              <img
+                src="images/irina-chistyakova.png"
+                alt="Ирина Чистякова — мастер перманентного макияжа"
+                width="900"
+                height="1200"
+                loading="eager"
+                decoding="async"
+              >
+            </div>
+            <figcaption class="hero-photo-caption">Ирина Чистякова — мастер перманентного макияжа</figcaption>
           </figure>
         </div>
         </div>
@@ -79,6 +75,7 @@
             <div class="services-poster-circle">
               <img src="images/works/brovi-1.png" alt="Работа по бровям" width="400" height="400" loading="lazy" decoding="async">
             </div>
+            <p class="services-poster-photo-caption">Брови — сразу после процедуры</p>
             <h3 class="services-poster-title">Брови</h3>
             <p class="services-poster-text">Будут правильной формы, насыщенного оттенка с эффектом пушистости и густоты.</p>
           </article>
@@ -86,6 +83,7 @@
             <div class="services-poster-circle">
               <img src="images/works/guby-1.png" alt="Работа по губам" width="400" height="400" loading="lazy" decoding="async">
             </div>
+            <p class="services-poster-photo-caption">Губы — мягкое заполнение цвета, после заживления</p>
             <h3 class="services-poster-title">Губы</h3>
             <p class="services-poster-text">Обретут контур и приятный оттенок. Возможно устранение асимметрии, если имеется.</p>
           </article>
@@ -93,6 +91,7 @@
             <div class="services-poster-circle">
               <img src="images/works/glaza-1.png" alt="Работа по векам" width="400" height="400" loading="lazy" decoding="async">
             </div>
+            <p class="services-poster-photo-caption">Межресничка — аккуратное усиление взгляда</p>
             <h3 class="services-poster-title">Веки</h3>
             <p class="services-poster-text">Взгляд станет ярче и выразительнее. Ресницы будут выглядеть гуще.</p>
           </article>
@@ -103,9 +102,13 @@
     <!-- Блок 2 -->
     <section class="bg-white" id="works">
       <div class="container">
+        <div class="gallery-promise js-reveal">
+          <p class="gallery-promise-line">Все работы — без фильтров и сильной обработки</p>
+          <p class="gallery-promise-line gallery-promise-line--accent">Вы видите результат так, как он выглядит в жизни</p>
+        </div>
         <div class="section-head js-reveal">
           <h2>Как выглядит результат</h2>
-          <p>Без фильтров и сильной обработки — так это выглядит в жизни</p>
+          <p>Подписи к фото — это важно: так понятнее, на каком этапе снят кадр</p>
         </div>
 
         <div class="gallery-block js-reveal">
@@ -114,21 +117,21 @@
           <div class="photo-row js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-1.png" alt="Результат перманента бровей, мягкая форма" width="800" height="1000" loading="lazy" decoding="async">
+                <img src="images/works/brovi-1.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">Сразу после</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Брови — сразу после процедуры</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-2.png" alt="Перманент бровей — аккуратная дуга и оттенок" width="800" height="1000" loading="lazy" decoding="async">
+                <img src="images/works/brovi-2.png" alt="Брови — после заживления" width="800" height="1000" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">После заживления</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Брови — после заживления</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/brovi-3.png" alt="Перманентный макияж бровей, естественный вид" width="800" height="1000" loading="lazy" decoding="async">
+                <img src="images/works/brovi-3.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">Сразу после</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Брови — сразу после процедуры</figcaption>
             </figure>
           </div>
         </div>
@@ -139,9 +142,9 @@
           <div class="photo-row photo-row--tight js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/guby-1.png" alt="Аккуратный оттенок и контур губ" width="900" height="900" loading="lazy" decoding="async">
+                <img src="images/works/guby-1.png" alt="Губы — мягкое заполнение цвета, после заживления" width="900" height="900" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">Результат работы</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Губы — мягкое заполнение цвета, после заживления</figcaption>
             </figure>
           </div>
         </div>
@@ -152,20 +155,20 @@
           <div class="photo-row js-reveal-row">
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/glaza-1.png" alt="Перманентный вековой макияж с мягкой растушёвкой" width="900" height="900" loading="lazy" decoding="async">
+                <img src="images/works/glaza-1.png" alt="Межресничка — аккуратное усиление взгляда" width="900" height="900" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">Сразу после</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Межресничка — аккуратное усиление взгляда</figcaption>
             </figure>
             <figure class="photo-card">
               <div class="img-wrap">
-                <img src="images/works/glaza-2.png" alt="Выразительный взгляд, оформление линии роста ресниц" width="800" height="1000" loading="lazy" decoding="async">
+                <img src="images/works/glaza-2.png" alt="Межресничка — после заживления" width="800" height="1000" loading="lazy" decoding="async">
               </div>
-              <figcaption class="photo-label">После заживления</figcaption>
+              <figcaption class="photo-label photo-label--descriptive">Межресничка — после заживления</figcaption>
             </figure>
           </div>
         </div>
 
-        <p class="gallery-hint js-reveal"><strong>Важно:</strong> на сайте указаны подписи «сразу после» и «после заживления» — так честнее показывать реальный результат.</p>
+        <p class="gallery-hint js-reveal"><strong>Важно:</strong> подписи «сразу после» и «после заживления» помогают честно показать результат — без иллюзий и «картинки из интернета».</p>
       </div>
     </section>
 
@@ -186,14 +189,33 @@
     </section>
 
     <!-- Блок 4 -->
-    <section class="bg-soft">
+    <section class="bg-soft section-offer">
       <div class="container">
         <div class="section-head js-reveal">
-          <h2>Если вам важна естественность — мы совпадём</h2>
+          <h2>Я работаю в естественной технике</h2>
         </div>
-        <div class="prose js-reveal">
-          <p>Я не работаю в стиле яркого, плотного перманента. Моя задача — аккуратно подчеркнуть ваши черты.</p>
-          <p>Результат выглядит как ваш — только чуть аккуратнее.</p>
+        <div class="prose js-reveal prose-offer">
+          <p>Я не делаю яркий, плотный перманент и не работаю в графичных формах.</p>
+          <p>Моя задача — аккуратно подчеркнуть ваши черты, чтобы результат выглядел как ваш — только чуть аккуратнее.</p>
+          <p><strong>Если вам важна естественность — мы совпадём.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white section-trust">
+      <div class="container">
+        <div class="section-head js-reveal">
+          <h2>В каких случаях я могу не рекомендовать процедуру</h2>
+        </div>
+        <ul class="list-check centered js-reveal">
+          <li>если кожа плохо удерживает пигмент</li>
+          <li>если есть противопоказания</li>
+          <li>если ожидается слишком яркий результат</li>
+          <li>если процедура не даст аккуратного эффекта</li>
+        </ul>
+        <div class="prose js-reveal prose-trust">
+          <p>В таких случаях я честно скажу об этом на консультации.</p>
+          <p>Мне важно не просто сделать процедуру, а чтобы результат действительно вам подошёл.</p>
         </div>
       </div>
     </section>
@@ -216,18 +238,21 @@
       </div>
     </section>
 
-    <!-- Блок 6 -->
-    <section>
+    <!-- Блок 6 — безопасность (усиленный) -->
+    <section class="section-safety">
       <div class="container">
         <div class="section-head js-reveal">
-          <h2>Безопасность и аккуратность</h2>
+          <h2>Безопасность и аккуратность — базовая часть работы</h2>
         </div>
         <ul class="list-check centered js-reveal">
-          <li>используются одноразовые материалы</li>
+          <li>используются только одноразовые расходные материалы</li>
           <li>рабочее место обрабатывается после каждого клиента</li>
-          <li>соблюдаются базовые нормы чистоты</li>
+          <li>соблюдаются все базовые нормы чистоты</li>
+          <li>работаю аккуратно, без спешки</li>
         </ul>
-        <p class="prose after-list-tight js-reveal">Работаю аккуратно и без спешки.</p>
+        <div class="safety-closing js-reveal">
+          <p>Я понимаю, что речь идёт о лице — поэтому здесь важна не только эстетика, но и <strong>безопасность</strong>.</p>
+        </div>
       </div>
     </section>
 
@@ -237,10 +262,11 @@
         <div class="section-head js-reveal">
           <h2>Ирина Чистякова</h2>
         </div>
-        <div class="prose js-reveal">
-          <p>Опыт работы — более 5 лет.</p>
-          <p>Работаю с перманентом, когда важно сохранить естественность. Подбираю форму индивидуально — без шаблонов.</p>
-          <p>Показываю реальные работы, чтобы вы понимали результат заранее.</p>
+        <div class="prose js-reveal prose-master">
+          <p>Работаю в сфере перманентного макияжа более 5 лет.</p>
+          <p>Мне важно, чтобы результат выглядел аккуратно и вы узнавали себя в зеркале.</p>
+          <p>Я не работаю по шаблонам — подбираю форму индивидуально, с учётом ваших черт лица.</p>
+          <p>Если вижу, что процедура не даст хорошего результата — честно скажу об этом.</p>
         </div>
       </div>
     </section>
@@ -297,6 +323,7 @@
       <div class="container">
         <div class="section-head js-reveal">
           <h2>Стоимость процедур</h2>
+          <p class="price-intro">Честные условия: в стоимость уже заложены подбор формы, сама процедура и рекомендации по уходу — без скрытых доплат за базовое.</p>
         </div>
         <table class="price-table js-reveal">
           <thead>
@@ -324,7 +351,10 @@
             </tr>
           </tbody>
         </table>
-        <p class="price-note js-reveal">Коррекция через 1–1,5 месяца — 50% стоимости. В цену входят подбор формы, процедура и рекомендации по уходу.</p>
+        <div class="price-foot js-reveal">
+          <p><strong>Коррекция</strong> через 1–1,5 месяца — <strong>50% стоимости</strong> выбранной процедуры.</p>
+          <p>Стоимость включает подбор формы, процедуру и рекомендации по уходу.</p>
+        </div>
       </div>
     </section>
 
@@ -373,6 +403,19 @@
             <summary>Сколько длится процедура?</summary>
             <p>От 1 до 3 часов, в зависимости от зоны.</p>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="consultation-calm bg-soft" id="consultation-calm" aria-labelledby="consultation-calm-title">
+      <div class="container">
+        <div class="section-head js-reveal">
+          <h2 id="consultation-calm-title">Можно начать с консультации</h2>
+        </div>
+        <div class="prose js-reveal prose-consultation">
+          <p>Вы можете прийти без обязательств — обсудить, подходит ли вам процедура и какой результат возможен.</p>
+          <p>Я объясню все этапы, отвечу на вопросы и помогу принять спокойное решение.</p>
+          <p><strong>Вы не обязаны записываться сразу.</strong></p>
         </div>
       </div>
     </section>
@@ -439,6 +482,7 @@
           <div class="request-form-actions">
             <button type="submit" class="btn btn-primary">Отправить заявку</button>
           </div>
+          <p class="btn-microcopy btn-microcopy--compact">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
           <p class="request-form-note">Откроется выбранный мессенджер с уже заполненным текстом заявки. Для Telegram и ВКонтакте в коде страницы должны быть указаны ваши логины (см. комментарий над формой). Max откроет окно отправки текста без дополнительной настройки.</p>
         </form>
       </div>
@@ -463,11 +507,14 @@
         <div class="final-actions">
           <a class="btn btn-primary" href="https://t.me/">Записаться на консультацию</a>
         </div>
+        <p class="final-or-write">или написать:</p>
         <div class="final-links">
-          <a class="btn btn-ghost btn-sm" href="https://t.me/" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-          <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">Написать в Max</a>
+          <a class="btn btn-ghost btn-sm" href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="btn btn-ghost btn-sm" href="https://vk.me/" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+          <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">Max</a>
         </div>
-        <p class="personal-note personal-note-center">Можно просто задать вопрос — отвечаю лично</p>
+        <p class="btn-microcopy btn-microcopy--footer">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
+        <p class="personal-note personal-note-center final-closing-line">Можно просто задать вопрос — <strong>я отвечу лично</strong></p>
       </div>
     </section>
   </main>
