@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Перманентный макияж — Ирина Чистякова | Куровское</title>
   <meta name="description" content="Естественный перманентный макияж в Куровском, ТЦ «Светлана». Брови, губы, межресничка. Консультация без обязательств.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="site">
   <header class="site-header">
     <div class="container inner">
       <a href="#" class="logo">Ирина Чистякова <span>· перманент</span></a>
@@ -21,7 +24,7 @@
     <!-- Блок 1 -->
     <section class="hero" id="top">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-copy">
           <h1>Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»</h1>
           <p class="hero-lead">Аккуратно подбираю форму и оттенок под ваши черты лица. Посмотрите работы — это мягкий, живой результат.</p>
           <p class="hero-note">Можно начать с консультации — без обязательств.</p>
@@ -38,8 +41,11 @@
           </div>
           <p class="personal-note">Можно просто задать вопрос — отвечаю лично</p>
         </div>
-        <div class="hero-aside hero-aside-placeholder" role="img" aria-label="Иллюстрация или фото мастера — замените на своё изображение">
-          Здесь можно разместить ваше фото или визуал студии
+        <div class="hero-visual">
+          <div class="hero-visual-glow" aria-hidden="true"></div>
+          <div class="hero-aside hero-aside-placeholder" role="img" aria-label="Иллюстрация или фото мастера — замените на своё изображение">
+            Здесь можно разместить ваше фото или визуал студии
+          </div>
         </div>
       </div>
     </section>
@@ -140,12 +146,14 @@
         <div class="section-head">
           <h2>Как проходит работа</h2>
         </div>
+        <div class="steps-wrap">
         <div class="steps">
           <div class="step"><span>Консультация — обсуждаем результат</span></div>
           <div class="step"><span>Подбор формы и оттенка</span></div>
           <div class="step"><span>Процедура</span></div>
           <div class="step"><span>Заживление</span></div>
           <div class="step"><span>Коррекция (при необходимости)</span></div>
+        </div>
         </div>
       </div>
     </section>
