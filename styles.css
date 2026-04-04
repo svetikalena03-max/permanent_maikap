@@ -1092,11 +1092,116 @@ section {
   line-height: 1.55;
 }
 
+/* Диалог перед записью */
+.dialog-section {
+  padding: 4rem 0;
+  background:
+    linear-gradient(180deg, rgba(201, 196, 188, 0.35) 0%, rgba(227, 222, 214, 0.25) 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.dialog-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.dialog-item {
+  margin-bottom: 2.5rem;
+}
+
+.dialog-item:last-of-type {
+  margin-bottom: 0;
+}
+
+.dialog-tag {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-poster);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.dialog-bubble {
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  margin-bottom: 0.65rem;
+  border: 1px solid var(--line);
+  line-height: 1.55;
+}
+
+.dialog-bubble:last-child {
+  margin-bottom: 0;
+}
+
+.dialog-bubble--client {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(107, 42, 56, 0.12);
+}
+
+.dialog-bubble--master {
+  background: var(--bg-card);
+  border-left: 3px solid var(--burgundy-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.dialog-role {
+  display: block;
+  font-family: var(--font-poster);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  margin-bottom: 0.4rem;
+}
+
+.dialog-bubble p {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.dialog-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.dialog-closing {
+  max-width: 36rem;
+  margin: 2.5rem auto 0;
+  padding: 1.2rem 1.35rem;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ink);
+  background: linear-gradient(135deg, rgba(107, 42, 56, 0.08) 0%, rgba(227, 222, 214, 0.6) 100%);
+  border: 1px solid rgba(107, 42, 56, 0.15);
+  border-radius: var(--radius);
+}
+
 /* Reviews */
 .reviews {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.reviews--realistic {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1.35rem;
+}
+
+@media (min-width: 900px) {
+  .reviews--realistic {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .review-card {
@@ -1133,6 +1238,40 @@ section {
   padding-top: 1.35rem;
   font-family: var(--font-body);
   font-style: italic;
+}
+
+.review-card--story {
+  font-style: normal;
+  padding: 1.35rem 1.4rem 1.4rem;
+}
+
+.review-card--story::before {
+  display: none;
+  content: none;
+}
+
+.review-card--story .review-topic {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  font-family: var(--font-poster);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.review-card--story .review-story p {
+  margin: 0 0 0.55rem;
+  padding-top: 0;
+  font-style: normal;
+  font-size: 0.96rem;
+  line-height: 1.58;
+  color: var(--ink-muted);
+}
+
+.review-card--story .review-story p:last-child {
+  margin-bottom: 0;
 }
 
 .review-placeholder {
