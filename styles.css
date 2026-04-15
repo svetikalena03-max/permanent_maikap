@@ -651,15 +651,23 @@ section {
 }
 
 .photo-row {
-  display: grid;
+  display: flex;
+  flex-wrap: nowrap;
   gap: 1.15rem;
-  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  align-items: stretch;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
 }
 
 .photo-row--tight {
-  max-width: 420px;
-  margin: 0 auto;
-  grid-template-columns: 1fr;
+  max-width: none;
+  margin: 0;
+}
+
+.photo-row .photo-card {
+  flex: 1 1 0;
+  min-width: 240px;
 }
 
 .media-showcase {
