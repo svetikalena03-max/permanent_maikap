@@ -126,7 +126,7 @@
         <div class="gallery-block js-reveal">
           <h3>Брови</h3>
           <p class="gallery-caption">Мягкая форма без жёстких линий</p>
-          <div class="photo-row" data-reveal-stagger="0.08" data-reveal-start="0.05">
+          <div class="photo-row photo-row--brows" data-reveal-stagger="0.08" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img class="image-lift" src="images/works/brovi-1.png" alt="Брови — сразу после процедуры" width="800" height="1000" loading="lazy" decoding="async">
@@ -163,7 +163,7 @@
         <div class="gallery-block js-reveal">
           <h3>Губы</h3>
           <p class="gallery-caption">Естественный оттенок, без эффекта помады</p>
-          <div class="photo-row photo-row--tight" data-reveal-stagger="0.1" data-reveal-start="0.05">
+          <div class="photo-row photo-row--tight photo-row--compact" data-reveal-stagger="0.1" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img class="image-lift" src="images/works/guby-1.png" alt="Губы — мягкое заполнение цвета, после заживления" width="900" height="900" loading="lazy" decoding="async">
@@ -182,7 +182,7 @@
         <div class="gallery-block js-reveal">
           <h3>Глаза / межресничка</h3>
           <p class="gallery-caption">Выразительность без яркой стрелки</p>
-          <div class="photo-row" data-reveal-stagger="0.08" data-reveal-start="0.05">
+          <div class="photo-row photo-row--compact" data-reveal-stagger="0.08" data-reveal-start="0.05">
             <figure class="photo-card">
               <div class="img-wrap">
                 <img class="image-lift" src="images/works/glaza-1.png" alt="Межресничка — аккуратное усиление взгляда" width="900" height="900" loading="lazy" decoding="async">
@@ -208,7 +208,7 @@
         </div>
 
         <div class="gallery-block js-reveal">
-          <h3>Видео кабинета</h3>
+          <p class="gallery-caption">На видео показан кабинет, где проходят процедуры.</p>
           <div class="video-row" data-reveal-stagger="0.1" data-reveal-start="0.05">
             <figure class="video-card">
               <video
@@ -688,6 +688,10 @@
           </div>
           <p class="btn-microcopy btn-microcopy--compact">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
           <p class="request-form-note">После отправки откроется выбранный мессенджер с готовым текстом заявки.</p>
+          <p class="request-form-policy-note">
+            Отправляя заявку, вы соглашаетесь с
+            <a href="#privacy-policy">политикой конфиденциальности</a>.
+          </p>
         </form>
       </div>
     </section>
@@ -721,12 +725,31 @@
         <p class="personal-note personal-note-center final-closing-line">Можно просто задать вопрос — <strong>я отвечу лично</strong></p>
       </div>
     </section>
+
+    <section class="privacy-policy-section bg-white" id="privacy-policy" aria-labelledby="privacy-policy-title">
+      <div class="container">
+        <div class="section-head js-reveal">
+          <h2 id="privacy-policy-title">Политика конфиденциальности</h2>
+          <p>О том, какие данные собираются через форму заявки и как они используются.</p>
+        </div>
+
+        <div class="privacy-policy-card js-reveal">
+          <p><strong>1. Какие данные обрабатываются</strong><br>Через форму на сайте обрабатываются только данные, которые вы указываете самостоятельно: ФИО и номер телефона.</p>
+          <p><strong>2. Для чего используются данные</strong><br>Данные используются только для связи с вами по вопросу записи на консультацию и ответа на ваш запрос.</p>
+          <p><strong>3. Передача данных третьим лицам</strong><br>Данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+          <p><strong>4. Срок хранения</strong><br>Данные хранятся не дольше, чем это необходимо для обработки обращения и организации записи.</p>
+          <p><strong>5. Отзыв согласия</strong><br>Вы можете отозвать согласие на обработку персональных данных, связавшись по телефону <a href="tel:+79031551435">+7 (903) 155-14-35</a>.</p>
+          <p><strong>6. Контакты оператора</strong><br>Ирина Чистякова, Куровское, ТЦ «Светлана», 3 этаж, кабинет 10.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container js-reveal">
       <p class="footer-line">Ирина Чистякова · перманентный макияж · Куровское</p>
       <p class="footer-phone"><a href="tel:+79031551435">+7 (903) 155-14-35</a></p>
+      <p class="footer-policy"><a href="#privacy-policy">Политика конфиденциальности</a></p>
     </div>
   </footer>
 </body>

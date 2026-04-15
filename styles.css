@@ -670,6 +670,34 @@ section {
   min-width: 240px;
 }
 
+.photo-row--brows {
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+
+.photo-row--brows .photo-card {
+  flex: 0 1 calc((100% - 2.3rem) / 3);
+  min-width: 260px;
+}
+
+.photo-row--compact {
+  justify-content: center;
+  gap: 0.95rem;
+}
+
+.photo-row--compact .photo-card {
+  flex: 0 1 220px;
+  min-width: 190px;
+  max-width: 240px;
+}
+
+@media (max-width: 920px) {
+  .photo-row--brows .photo-card {
+    flex-basis: calc((100% - 1.15rem) / 2);
+    min-width: 220px;
+  }
+}
+
 .media-showcase {
   background: linear-gradient(180deg, rgba(201, 196, 188, 0.42) 0%, rgba(227, 222, 214, 0.3) 100%);
   border-top: 1px solid var(--line);
