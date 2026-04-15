@@ -1816,6 +1816,11 @@ body.has-custom-cursor [role="button"] {
   font-weight: 600;
 }
 
+.request-form-hint--success,
+.request-form-hint--success[role="alert"] {
+  color: #2e5b3a;
+}
+
 .request-form-actions {
   margin-bottom: 1rem;
 }
