@@ -630,14 +630,12 @@
           <h2 id="request-title">Можно просто написать</h2>
           <p>Оставьте имя и телефон — я свяжусь с вами и помогу подобрать удобное время.</p>
         </div>
-        <!-- Замените пустые data-telegram-user и data-vk-screen на свои логины (без @). Max настраивать не нужно. -->
         <form
           class="request-form js-reveal"
           id="request-form"
           novalidate
           data-telegram-user=""
           data-vk-screen=""
-          data-local-bot-url="http://127.0.0.1:8787/lead"
         >
           <div class="request-form-fields">
             <label class="request-field">
@@ -667,19 +665,15 @@
             </label>
           </div>
           <fieldset class="request-messenger-fieldset">
-            <legend class="request-label">Куда отправить заявку</legend>
+            <legend class="request-label">Куда удобнее написать</legend>
             <div class="request-messenger-options" role="radiogroup" aria-label="Мессенджер">
               <label class="request-messenger-option">
-                <input type="radio" name="request-messenger" value="telegram">
+                <input type="radio" name="request-messenger" value="telegram" checked>
                 <span class="request-messenger-card">Telegram</span>
               </label>
               <label class="request-messenger-option">
                 <input type="radio" name="request-messenger" value="vk">
                 <span class="request-messenger-card">ВКонтакте</span>
-              </label>
-              <label class="request-messenger-option">
-                <input type="radio" name="request-messenger" value="max" checked>
-                <span class="request-messenger-card">Max</span>
               </label>
             </div>
           </fieldset>
@@ -688,7 +682,7 @@
             <button type="submit" class="btn btn-primary">Отправить заявку</button>
           </div>
           <p class="btn-microcopy btn-microcopy--compact">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
-          <p class="request-form-note">После отправки откроется выбранный мессенджер с готовым текстом заявки.</p>
+          <p class="request-form-note">После отправки откроется выбранный мессенджер, чтобы вы могли быстро написать и записаться.</p>
           <p class="request-form-policy-note">
             Отправляя заявку, вы соглашаетесь с
             <a href="#privacy-policy">политикой конфиденциальности</a>.

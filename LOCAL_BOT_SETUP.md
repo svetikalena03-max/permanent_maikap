@@ -12,3 +12,9 @@
 3. Оставьте этот процесс запущенным.
 
 После этого заявки с формы будут приходить в Telegram-бота.
+
+## Автозапуск в Windows
+1. Выполните в PowerShell (из корня проекта):
+   - `powershell -ExecutionPolicy Bypass -File .\setup-relay-autostart.ps1`
+2. Будет создана задача `PermanentMaikapTelegramRelay`, которая запускает relay при входе в Windows.
+3. Скрипт запуска: `start-relay.ps1`.

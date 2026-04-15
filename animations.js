@@ -270,46 +270,14 @@
     initHeroTypewriter();
   }
 
-  /* Форма заявки → Telegram, ВК или Max с текстом */
+  /* Форма заявки -> Netlify Function -> Telegram bot */
   var requestForm = document.getElementById("request-form");
   var requestError = document.getElementById("request-form-error");
   if (requestForm && requestError) {
-    function buildRequestText(fullname, phone) {
-      return (
-        "Заявка с сайта (перманентный макияж)\n" +
-        "ФИО: " +
-        fullname +
-        "\n" +
-        "Телефон: " +
-        phone
-      );
-    }
-
-    async function sendLeadToLocalBot(fullname, phone, channel) {
-      var relayUrl = (requestForm.dataset.localBotUrl || "").trim();
-      if (!relayUrl) return false;
-      try {
-        var response = await fetch(relayUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullname: fullname,
-            phone: phone,
-            channel: channel || "max",
-            source: "landing"
-          })
-        });
-        return response.ok;
-      } catch (err) {
-        return false;
-      }
-    }
-
     requestForm.addEventListener("submit", function (e) {
       e.preventDefault();
       requestError.hidden = true;
       requestError.textContent = "";
-      requestError.classList.remove("request-form-hint--success");
       var nameEl = document.getElementById("request-fullname");
       var phoneEl = document.getElementById("request-phone");
       if (!nameEl || !phoneEl) return;
@@ -328,45 +296,21 @@
         return;
       }
 
-      var messenger = requestForm.querySelector('input[name="request-messenger"]:checked');
-      var channel = messenger ? messenger.value : "max";
-      var encoded = encodeURIComponent(buildRequestText(fullname, phone));
-      var url;
-
-      sendLeadToLocalBot(fullname, phone, channel).then(function (sent) {
-        if (sent) {
-          requestError.textContent = "Заявка отправлена. Я свяжусь с вами в ближайшее время.";
-          requestError.classList.add("request-form-hint--success");
-          requestError.hidden = false;
+      fetch("/.netlify/functions/send-telegram", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ fullname: fullname, phone: phone })
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("send failed");
+          alert("Заявка отправлена");
           requestForm.reset();
-          return;
-        }
-
-        if (channel === "telegram") {
-          var tg = (requestForm.dataset.telegramUser || "").trim().replace(/^@/, "");
-          if (!tg) {
-            requestError.textContent =
-              "Локальный бот недоступен. Укажите data-telegram-user (без @) или выберите Max.";
-            requestError.hidden = false;
-            return;
-          }
-          url = "https://t.me/" + encodeURIComponent(tg) + "?text=" + encoded;
-        } else if (channel === "vk") {
-          var vk = (requestForm.dataset.vkScreen || "").trim();
-          vk = vk.replace(/^https?:\/\/(vk\.com\/|vk\.me\/)?/i, "").replace(/\/$/, "");
-          if (!vk) {
-            requestError.textContent =
-              "Локальный бот недоступен. Для ВКонтакте укажите data-vk-screen или выберите Max.";
-            requestError.hidden = false;
-            return;
-          }
-          url = "https://vk.me/" + encodeURIComponent(vk) + "?text=" + encoded;
-        } else {
-          url = "https://max.ru/:share?text=" + encoded;
-        }
-
-        window.open(url, "_blank", "noopener,noreferrer");
-      });
+        })
+        .catch(function () {
+          alert("Ошибка отправки. Напишите в Telegram или ВКонтакте");
+        });
     });
   }
 })();
