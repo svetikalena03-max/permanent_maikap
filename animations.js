@@ -3,6 +3,120 @@
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function initHeroTypewriterStatic() {
+    var typeRoot = document.querySelector("[data-hero-typewriter]");
+    var h1 = document.querySelector(".hero-h1");
+    var sr = h1 && h1.querySelector(".visually-hidden");
+    if (typeRoot) typeRoot.setAttribute("hidden", "");
+    if (sr) {
+      sr.classList.remove("visually-hidden");
+      sr.classList.add("visually-hidden--off");
+    }
+  }
+
+  function initHeroTypewriter() {
+    var typeRoot = document.querySelector("[data-hero-typewriter]");
+    if (!typeRoot || reduce) return;
+
+    var contentEl = typeRoot.querySelector(".text-type__content");
+    if (!contentEl) return;
+
+    var lines = [
+      "Перманентный макияж, который выглядит естественно — без эффекта «нарисовано»",
+      "Брови, губы, межресничка — подбираю форму и оттенок под ваши черты лица",
+      "Куровское, ТЦ «Светлана» — можно начать с консультации, без обязательств"
+    ];
+
+    var typingSpeed = 48;
+    var deletingSpeed = 42;
+    var pauseDuration = 2700;
+    var initialDelay = 380;
+    var loop = true;
+
+    var currentTextIndex = 0;
+    var displayedText = "";
+    var currentCharIndex = 0;
+    var isDeleting = false;
+    var timeoutId = null;
+
+    function clearTimer() {
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+    }
+
+    function tick() {
+      clearTimer();
+      var currentText = lines[currentTextIndex];
+
+      if (isDeleting) {
+        if (!displayedText) {
+          isDeleting = false;
+          currentTextIndex = (currentTextIndex + 1) % lines.length;
+          currentCharIndex = 0;
+          timeoutId = setTimeout(tick, pauseDuration);
+          return;
+        }
+        displayedText = displayedText.slice(0, -1);
+        contentEl.textContent = displayedText;
+        timeoutId = setTimeout(tick, deletingSpeed);
+        return;
+      }
+
+      if (currentCharIndex < currentText.length) {
+        currentCharIndex += 1;
+        displayedText = currentText.slice(0, currentCharIndex);
+        contentEl.textContent = displayedText;
+        timeoutId = setTimeout(tick, typingSpeed);
+        return;
+      }
+
+      if (!loop && currentTextIndex === lines.length - 1) return;
+
+      timeoutId = setTimeout(function () {
+        isDeleting = true;
+        tick();
+      }, pauseDuration);
+    }
+
+    function onReady() {
+      clearTimer();
+      displayedText = "";
+      currentCharIndex = 0;
+      isDeleting = false;
+      currentTextIndex = 0;
+      contentEl.textContent = "";
+      timeoutId = setTimeout(tick, initialDelay);
+    }
+
+    var h1 = typeRoot.closest(".hero-h1");
+    var fallbackTimer = null;
+
+    if (h1 && h1.classList.contains("is-revealed")) {
+      onReady();
+    } else if (h1) {
+      var mo = new MutationObserver(function () {
+        if (h1.classList.contains("is-revealed")) {
+          mo.disconnect();
+          if (fallbackTimer !== null) {
+            clearTimeout(fallbackTimer);
+            fallbackTimer = null;
+          }
+          onReady();
+        }
+      });
+      mo.observe(h1, { attributes: true, attributeFilter: ["class"] });
+      fallbackTimer = setTimeout(function () {
+        mo.disconnect();
+        fallbackTimer = null;
+        if (!h1.classList.contains("is-revealed")) onReady();
+      }, 2400);
+    } else {
+      onReady();
+    }
+  }
+
   function initRevealStagger() {
     document.querySelectorAll("[data-reveal-stagger]").forEach(function (root) {
       var step = parseFloat(root.getAttribute("data-reveal-stagger"), 10);
@@ -49,6 +163,7 @@
 
   if (reduce) {
     revealAll();
+    initHeroTypewriterStatic();
   } else {
     var observer = new IntersectionObserver(
       function (entries) {
@@ -151,6 +266,8 @@
         cursorFrame();
       }
     }
+
+    initHeroTypewriter();
   }
 
   /* Форма заявки → Telegram, ВК или Max с текстом */

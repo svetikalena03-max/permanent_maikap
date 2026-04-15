@@ -334,6 +334,66 @@ a:hover {
   }
 }
 
+/* Скрытый текст для скринридеров (видимый дубль при отключённой анимации — см. animations.js) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.visually-hidden--off {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Эффект печати в hero (аналог TextType, без React) */
+.text-type {
+  display: inline;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.12em;
+  display: inline-block;
+  font-weight: 500;
+  color: var(--burgundy-soft);
+  animation: text-type-cursor-blink 0.5s ease-in-out infinite;
+}
+
+.text-type__cursor.is-hidden {
+  visibility: hidden;
+}
+
+@keyframes text-type-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-type__cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Заголовок первого экрана — шрифт без изменений (Georgia / Times) */
 .hero h1 {
   font-family: var(--font-display);
@@ -344,6 +404,11 @@ a:hover {
   margin: 0 0 1.15rem;
   color: var(--ink);
   text-wrap: balance;
+}
+
+.hero-h1-type {
+  display: block;
+  min-height: 4.5rem;
 }
 
 .hero-lead {
@@ -796,6 +861,66 @@ section {
 .gallery-hint strong {
   color: var(--ink);
   font-weight: 600;
+}
+
+/* Сертификаты */
+.certificates {
+  padding-block: 2.5rem 2.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.certificates .section-head {
+  margin-bottom: 0.85rem;
+}
+
+.cert-text {
+  max-width: 34rem;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.cert-grid {
+  display: grid;
+  width: 100%;
+  max-width: 38rem;
+  margin-inline: auto;
+  gap: clamp(0.75rem, 1.8vw, 1.1rem);
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .cert-grid {
+    max-width: 46rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: stretch;
+    align-items: start;
+  }
+
+  .certificates .cert-photo {
+    max-width: none;
+  }
+}
+
+.cert-photo {
+  display: block;
+  width: 100%;
+  max-width: 16.5rem;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 14px rgba(20, 18, 16, 0.055);
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out);
+}
+
+.cert-photo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(20, 18, 16, 0.09);
 }
 
 /* Lists */
