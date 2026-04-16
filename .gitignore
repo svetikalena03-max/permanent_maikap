@@ -1,2 +1,5 @@
 local-private/
 *.local
+
+# Local Netlify folder
+.netlify
