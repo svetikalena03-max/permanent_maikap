@@ -729,22 +729,23 @@ section {
 .video-card {
   margin: 0 auto;
   width: 100%;
-  max-width: min(96vw, 820px);
+  /* до loadedmetadata: не раздуваем блок на всю ширину */
+  max-width: min(92vw, 640px);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: linear-gradient(165deg, #e8e3db 0%, #d4cfc7 45%, #c5c0b8 100%);
   border: 1px solid var(--line-strong);
   box-shadow: var(--shadow-soft), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  padding: 0.55rem;
+  padding: 0.45rem;
   transition: box-shadow 0.35s var(--ease-out);
 }
 
 .video-card--portrait {
-  max-width: min(92vw, 480px);
+  max-width: min(88vw, 380px);
 }
 
 .video-card--landscape {
-  max-width: min(96vw, 820px);
+  max-width: min(92vw, 640px);
 }
 
 .video-card:hover {
@@ -753,9 +754,11 @@ section {
 
 .media-video {
   width: 100%;
+  max-height: min(58vh, 420px);
   height: auto;
   display: block;
-  border-radius: 18px;
+  margin: 0 auto;
+  border-radius: 16px;
   background: #1a1816;
 }
 
