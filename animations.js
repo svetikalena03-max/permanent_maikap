@@ -270,6 +270,76 @@
     initHeroTypewriter();
   }
 
+  function initPrivacyModal() {
+    var modal = document.getElementById("privacy-modal");
+    if (!modal) return;
+
+    var openers = document.querySelectorAll("[data-open-privacy]");
+    var closers = modal.querySelectorAll("[data-close-privacy]");
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      modal.removeAttribute("hidden");
+      document.body.classList.add("privacy-modal-open");
+      var closeBtn = modal.querySelector(".privacy-modal__close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.setAttribute("hidden", "");
+      document.body.classList.remove("privacy-modal-open");
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus();
+      }
+      lastFocus = null;
+    }
+
+    openers.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    closers.forEach(function (el) {
+      el.addEventListener("click", function () {
+        closeModal();
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hasAttribute("hidden")) {
+        closeModal();
+      }
+    });
+  }
+
+  initPrivacyModal();
+
+  function initVideoLayout() {
+    var video = document.querySelector(".media-video");
+    var card = video && video.closest(".video-card");
+    if (!video || !card) return;
+
+    function apply() {
+      var w = video.videoWidth;
+      var h = video.videoHeight;
+      if (!w || !h) return;
+      card.classList.remove("video-card--portrait", "video-card--landscape");
+      if (h > w) {
+        card.classList.add("video-card--portrait");
+      } else {
+        card.classList.add("video-card--landscape");
+      }
+    }
+
+    video.addEventListener("loadedmetadata", apply);
+    if (video.readyState >= 1) apply();
+  }
+
+  initVideoLayout();
+
   /* Форма заявки -> Netlify Function -> Telegram bot */
   var requestForm = document.getElementById("request-form");
   var requestError = document.getElementById("request-form-error");
@@ -280,7 +350,15 @@
       requestError.textContent = "";
       var nameEl = document.getElementById("request-fullname");
       var phoneEl = document.getElementById("request-phone");
+      var consentEl = document.getElementById("request-consent");
       if (!nameEl || !phoneEl) return;
+      if (consentEl && !consentEl.checked) {
+        requestError.textContent =
+          "Пожалуйста, отметьте согласие с политикой конфиденциальности.";
+        requestError.hidden = false;
+        consentEl.focus();
+        return;
+      }
       var fullname = nameEl.value.trim();
       var phone = phoneEl.value.trim();
       if (!fullname) {

@@ -46,6 +46,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body.privacy-modal-open {
+  overflow: hidden;
+}
+
 body.site {
   margin: 0;
   font-family: var(--font-body);
@@ -704,34 +708,55 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
+.media-showcase .gallery-block--media {
+  margin-bottom: 1.25rem;
+}
+
+.media-showcase .gallery-block--media .gallery-caption {
+  margin-bottom: 0.85rem;
+}
+
 .video-row {
-  display: grid;
-  gap: 1.15rem;
-  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
   margin: 0 auto;
+  padding: 0;
+  gap: 0;
 }
 
 .video-card {
-  border-radius: var(--radius-sm) var(--radius) var(--radius) var(--radius-sm);
+  margin: 0 auto;
+  width: 100%;
+  max-width: min(96vw, 820px);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--line);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  transition:
-    transform 0.45s var(--ease-out),
-    box-shadow 0.45s var(--ease-out);
+  background: linear-gradient(165deg, #e8e3db 0%, #d4cfc7 45%, #c5c0b8 100%);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-soft), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  padding: 0.55rem;
+  transition: box-shadow 0.35s var(--ease-out);
+}
+
+.video-card--portrait {
+  max-width: min(92vw, 480px);
+}
+
+.video-card--landscape {
+  max-width: min(96vw, 820px);
 }
 
 .video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--shadow-lift);
 }
 
 .media-video {
-  display: block;
   width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
   background: #1a1816;
-  aspect-ratio: 16 / 9;
 }
 
 .photo-card {
@@ -1821,6 +1846,67 @@ body.has-custom-cursor [role="button"] {
   color: #2e5b3a;
 }
 
+.request-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0 0 1.15rem;
+  max-width: 520px;
+  margin-inline: auto;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.request-consent input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.2rem;
+  accent-color: var(--burgundy);
+  cursor: pointer;
+}
+
+.request-consent > span {
+  display: block;
+}
+
+.privacy-link-button {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--burgundy);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out);
+}
+
+.privacy-link-button:hover {
+  color: var(--burgundy-deep);
+}
+
+.privacy-link-button:focus-visible {
+  outline: 2px solid var(--burgundy-soft);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.footer-privacy-link {
+  font-size: inherit;
+  color: var(--ink-muted);
+}
+
+.footer-privacy-link:hover {
+  color: var(--burgundy);
+}
+
 .request-form-actions {
   margin-bottom: 1rem;
 }
@@ -1846,51 +1932,116 @@ body.has-custom-cursor [role="button"] {
   text-align: center;
 }
 
-.request-form-policy-note {
-  margin: 0.75rem 0 0;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--ink-muted);
-  text-align: center;
-}
-
-.request-form-policy-note a {
-  color: var(--burgundy);
-  text-decoration: underline;
-  text-underline-offset: 0.12em;
-}
-
-.privacy-policy-section {
-  border-top: 1px solid var(--line);
-}
-
-.privacy-policy-card {
-  max-width: 760px;
-  margin: 0 auto;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  border-radius: var(--radius);
-  padding: 1.35rem 1.25rem;
-  color: var(--ink-muted);
-}
-
-.privacy-policy-card p {
-  margin: 0 0 0.95rem;
-  line-height: 1.58;
-}
-
-.privacy-policy-card p:last-child {
-  margin-bottom: 0;
-}
-
-.privacy-policy-card strong {
-  color: var(--ink);
-}
-
 .footer-policy {
   margin: 0.45rem 0 0;
   font-size: 0.82rem;
+}
+
+/* Модальное окно политики конфиденциальности */
+.privacy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+
+.privacy-modal[hidden] {
+  display: none !important;
+}
+
+.privacy-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.privacy-modal__dialog {
+  position: relative;
+  z-index: 1;
+  cursor: default;
+  width: min(100%, 520px);
+  max-height: min(88vh, 640px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.privacy-modal__dialog h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.5vw, 1.45rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  margin: 0;
+  padding: 1.35rem 3rem 0.85rem 1.35rem;
+  flex-shrink: 0;
+}
+
+.privacy-modal__close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: rgba(227, 222, 214, 0.85);
+  color: var(--graphite);
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease-out),
+    color 0.2s var(--ease-out);
+}
+
+.privacy-modal__close:hover {
+  background: var(--bg-card);
+  color: var(--burgundy-deep);
+}
+
+.privacy-modal__close:focus-visible {
+  outline: 2px solid var(--burgundy-soft);
+  outline-offset: 2px;
+}
+
+.privacy-modal__content {
+  overflow-y: auto;
+  padding: 0 1.35rem 1.35rem;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.58;
+}
+
+.privacy-modal__content p {
+  margin: 0 0 0.85rem;
+}
+
+.privacy-modal__content p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-modal__content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.privacy-modal__content a {
+  color: var(--burgundy);
 }
 
 /* Final CTA */

@@ -24,7 +24,7 @@
       </a>
       <nav class="nav-cta">
         <a class="btn btn-ghost btn-sm nav-link-request" href="#request">Заявка</a>
-        <a class="btn btn-primary btn-sm" href="https://t.me/assistant_Irinachistyakova_bot" target="_blank" rel="noopener noreferrer">Записаться</a>
+        <a class="btn btn-primary btn-sm" href="#request">Записаться</a>
       </nav>
     </div>
   </header>
@@ -50,7 +50,7 @@
             <span>Куровское, ТЦ «Светлана», 3 этаж, кабинет 10</span>
           </p>
           <div class="hero-actions reveal" style="--delay: 0.25s;">
-            <a class="btn btn-primary" href="https://t.me/assistant_Irinachistyakova_bot" target="_blank" rel="noopener noreferrer">Записаться на консультацию</a>
+            <a class="btn btn-primary" href="#request">Записаться на консультацию</a>
           </div>
           <div class="hero-links reveal" style="--delay: 0.3s;">
             <a class="btn btn-ghost btn-sm" href="https://t.me/assistant_Irinachistyakova_bot" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
@@ -207,7 +207,7 @@
           <h2>Где проходит процедура</h2>
         </div>
 
-        <div class="gallery-block js-reveal">
+        <div class="gallery-block gallery-block--media js-reveal">
           <p class="gallery-caption">На видео показан кабинет, где проходят процедуры.</p>
           <div class="video-row" data-reveal-stagger="0.1" data-reveal-start="0.05">
             <figure class="video-card">
@@ -678,15 +678,15 @@
             </div>
           </fieldset>
           <p class="request-form-hint" id="request-form-error" role="alert" hidden></p>
+          <label class="request-consent">
+            <input type="checkbox" id="request-consent" required>
+            <span>Я соглашаюсь с <button type="button" class="privacy-link-button" data-open-privacy>политикой конфиденциальности</button></span>
+          </label>
           <div class="request-form-actions">
             <button type="submit" class="btn btn-primary">Отправить заявку</button>
           </div>
           <p class="btn-microcopy btn-microcopy--compact">Можно просто написать и задать вопрос<br><span class="btn-microcopy-strong">Отвечаю лично в течение дня</span></p>
           <p class="request-form-note">После отправки откроется выбранный мессенджер, чтобы вы могли быстро написать и записаться.</p>
-          <p class="request-form-policy-note">
-            Отправляя заявку, вы соглашаетесь с
-            <a href="#privacy-policy">политикой конфиденциальности</a>.
-          </p>
         </form>
       </div>
     </section>
@@ -709,7 +709,7 @@
           <a href="tel:+79031551435" class="phone-link">+7 (903) 155-14-35</a>
         </p>
         <div class="final-actions">
-          <a class="btn btn-primary" href="https://t.me/assistant_Irinachistyakova_bot" target="_blank" rel="noopener noreferrer">Записаться на консультацию</a>
+          <a class="btn btn-primary" href="#request">Записаться на консультацию</a>
         </div>
         <p class="final-or-write">или написать:</p>
         <div class="final-links">
@@ -721,31 +721,30 @@
       </div>
     </section>
 
-    <section class="privacy-policy-section bg-white" id="privacy-policy" aria-labelledby="privacy-policy-title">
-      <div class="container">
-        <div class="section-head js-reveal">
-          <h2 id="privacy-policy-title">Политика конфиденциальности</h2>
-          <p>О том, какие данные собираются через форму заявки и как они используются.</p>
-        </div>
-
-        <div class="privacy-policy-card js-reveal">
-          <p><strong>1. Какие данные обрабатываются</strong><br>Через форму на сайте обрабатываются только данные, которые вы указываете самостоятельно: ФИО и номер телефона.</p>
-          <p><strong>2. Для чего используются данные</strong><br>Данные используются только для связи с вами по вопросу записи на консультацию и ответа на ваш запрос.</p>
-          <p><strong>3. Передача данных третьим лицам</strong><br>Данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
-          <p><strong>4. Срок хранения</strong><br>Данные хранятся не дольше, чем это необходимо для обработки обращения и организации записи.</p>
-          <p><strong>5. Отзыв согласия</strong><br>Вы можете отозвать согласие на обработку персональных данных, связавшись по телефону <a href="tel:+79031551435">+7 (903) 155-14-35</a>.</p>
-          <p><strong>6. Контакты оператора</strong><br>Ирина Чистякова, Куровское, ТЦ «Светлана», 3 этаж, кабинет 10.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container js-reveal">
       <p class="footer-line">Ирина Чистякова · перманентный макияж · Куровское</p>
       <p class="footer-phone"><a href="tel:+79031551435">+7 (903) 155-14-35</a></p>
-      <p class="footer-policy"><a href="#privacy-policy">Политика конфиденциальности</a></p>
+      <p class="footer-policy"><button type="button" class="privacy-link-button footer-privacy-link" data-open-privacy>Политика конфиденциальности</button></p>
     </div>
   </footer>
+
+  <div class="privacy-modal" id="privacy-modal" hidden>
+    <div class="privacy-modal__backdrop" data-close-privacy></div>
+    <div class="privacy-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+      <button type="button" class="privacy-modal__close" data-close-privacy aria-label="Закрыть">×</button>
+      <h2 id="privacy-modal-title">Политика конфиденциальности</h2>
+      <div class="privacy-modal__content">
+        <p><strong>1. Какие данные обрабатываются</strong><br>Через форму на сайте обрабатываются только данные, которые вы указываете самостоятельно: ФИО и номер телефона.</p>
+        <p><strong>2. Для чего используются данные</strong><br>Данные используются только для связи с вами по вопросу записи на консультацию и ответа на ваш запрос.</p>
+        <p><strong>3. Передача данных третьим лицам</strong><br>Данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+        <p><strong>4. Срок хранения</strong><br>Данные хранятся не дольше, чем это необходимо для обработки обращения и организации записи.</p>
+        <p><strong>5. Отзыв согласия</strong><br>Вы можете отозвать согласие на обработку персональных данных, связавшись по телефону <a href="tel:+79031551435">+7 (903) 155-14-35</a>.</p>
+        <p><strong>6. Контакты оператора</strong><br>Ирина Чистякова, Куровское, ТЦ «Светлана», 3 этаж, кабинет 10.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
