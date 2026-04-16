@@ -344,6 +344,11 @@
   var requestForm = document.getElementById("request-form");
   var requestError = document.getElementById("request-form-error");
   if (requestForm && requestError) {
+    var messengerLinks = {
+      telegram: "https://t.me/assistant_Irinachistyakova_bot",
+      vk: "https://vk.me/iriska_77?text=Здравствуйте!%20Хочу%20записаться%20на%20консультацию"
+    };
+
     requestForm.addEventListener("submit", function (e) {
       e.preventDefault();
       requestError.hidden = true;
@@ -351,6 +356,7 @@
       var nameEl = document.getElementById("request-fullname");
       var phoneEl = document.getElementById("request-phone");
       var consentEl = document.getElementById("request-consent");
+      var messengerEl = requestForm.querySelector("input[name='request-messenger']:checked");
       if (!nameEl || !phoneEl) return;
       if (consentEl && !consentEl.checked) {
         requestError.textContent =
@@ -383,7 +389,10 @@
       })
         .then(function (response) {
           if (!response.ok) throw new Error("send failed");
+          var messenger = messengerEl ? messengerEl.value : "telegram";
+          var messengerUrl = messengerLinks[messenger] || messengerLinks.telegram;
           alert("Заявка отправлена");
+          window.open(messengerUrl, "_blank", "noopener,noreferrer");
           requestForm.reset();
         })
         .catch(function () {
