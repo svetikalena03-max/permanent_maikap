@@ -2,6 +2,8 @@
   "use strict";
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mobileHero = window.matchMedia("(max-width: 768px)").matches;
+  var disableHeroTypewriter = reduce || mobileHero;
 
   function initHeroTypewriterStatic() {
     var typeRoot = document.querySelector("[data-hero-typewriter]");
@@ -16,7 +18,7 @@
 
   function initHeroTypewriter() {
     var typeRoot = document.querySelector("[data-hero-typewriter]");
-    if (!typeRoot || reduce) return;
+    if (!typeRoot || disableHeroTypewriter) return;
 
     var contentEl = typeRoot.querySelector(".text-type__content");
     if (!contentEl) return;
@@ -161,7 +163,7 @@
     window.addEventListener("scroll", onScrollHeader, { passive: true });
   }
 
-  if (reduce) {
+  if (disableHeroTypewriter) {
     revealAll();
     initHeroTypewriterStatic();
   } else {

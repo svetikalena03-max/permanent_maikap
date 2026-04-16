@@ -326,6 +326,14 @@ a:hover {
   align-items: center;
 }
 
+.hero-copy {
+  text-align: left;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  padding: 0;
+}
+
 @media (min-width: 900px) {
   .hero-grid {
     grid-template-columns: 1.12fr 0.88fr;
@@ -365,6 +373,18 @@ a:hover {
 .text-type {
   display: inline;
   white-space: pre-wrap;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+}
+
+.text-type__content {
+  display: inline;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
 }
 
 .text-type__cursor {
@@ -408,11 +428,23 @@ a:hover {
   margin: 0 0 1.15rem;
   color: var(--ink);
   text-wrap: balance;
+  text-align: left;
+  padding: 0;
+  text-indent: 0;
 }
 
 .hero-h1-type {
   display: block;
   min-height: 4.5rem;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.hero-h1 {
+  text-align: left;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .hero-lead {
@@ -2253,5 +2285,51 @@ body.has-custom-cursor [role="button"] {
 
   .site-header {
     transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-copy {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.48rem, 6vw, 1.86rem);
+    line-height: 1.28;
+    letter-spacing: -0.008em;
+    margin: 0 0 1rem;
+    text-align: left;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-h1-type {
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+  }
+
+  .text-type,
+  .text-type__content {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+    text-indent: 0;
+  }
+
+  .hero-h1.reveal,
+  .hero-h1.reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .text-type__cursor {
+    display: none;
   }
 }
