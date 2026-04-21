@@ -741,11 +741,11 @@ section {
 }
 
 .media-showcase .gallery-block--media {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .media-showcase .gallery-block--media .gallery-caption {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
 }
 
 .video-row {
@@ -758,39 +758,50 @@ section {
   gap: 0;
 }
 
-.video-card {
+.media-showcase .video-card {
   margin: 0 auto;
   width: 100%;
-  /* до loadedmetadata: не раздуваем блок на всю ширину */
-  max-width: min(92vw, 640px);
+  max-width: min(92vw, 480px);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: linear-gradient(165deg, #e8e3db 0%, #d4cfc7 45%, #c5c0b8 100%);
   border: 1px solid var(--line-strong);
   box-shadow: var(--shadow-soft), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  padding: 0.45rem;
+  padding: 0.2rem;
   transition: box-shadow 0.35s var(--ease-out);
 }
 
-.video-card--portrait {
-  max-width: min(88vw, 380px);
+.media-showcase .video-card--portrait {
+  max-width: min(92vw, 420px);
 }
 
-.video-card--landscape {
-  max-width: min(92vw, 640px);
+.media-showcase .video-card--landscape {
+  max-width: min(92vw, 480px);
 }
 
-.video-card:hover {
+.media-showcase .video-card:hover {
   box-shadow: var(--shadow-lift);
 }
 
-.media-video {
+.video-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.video-wrapper video {
   width: 100%;
-  max-height: min(58vh, 420px);
   height: auto;
   display: block;
-  margin: 0 auto;
   border-radius: 16px;
+}
+
+.media-showcase .video-card--portrait .video-wrapper {
+  max-width: min(480px, 100%);
+}
+
+.media-showcase .video-wrapper .media-video {
+  max-height: none;
+  margin: 0;
   background: #1a1816;
 }
 
