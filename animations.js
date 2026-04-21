@@ -1,6 +1,33 @@
 (function () {
   "use strict";
 
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  function scrollToTopHard() {
+    window.scrollTo(0, 0);
+  }
+
+  scrollToTopHard();
+  requestAnimationFrame(function () {
+    requestAnimationFrame(scrollToTopHard);
+  });
+  window.addEventListener(
+    "load",
+    function () {
+      scrollToTopHard();
+      window.setTimeout(scrollToTopHard, 0);
+      window.setTimeout(scrollToTopHard, 150);
+    },
+    { once: true }
+  );
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) scrollToTopHard();
+  });
+
+  var PM_RETURN_READING_KEY = "pm_return_reading_y";
+
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var mobileHero = window.matchMedia("(max-width: 768px)").matches;
   var disableHeroTypewriter = reduce || mobileHero;
@@ -342,6 +369,59 @@
 
   initVideoLayout();
 
+  function initReturnToReading() {
+    var returnBtn = document.getElementById("return-to-reading");
+    if (!returnBtn) return;
+
+    function showReturn() {
+      var raw = sessionStorage.getItem(PM_RETURN_READING_KEY);
+      if (raw === null || raw === "") return;
+      var y = parseFloat(raw, 10);
+      if (isNaN(y)) return;
+      returnBtn.removeAttribute("hidden");
+      returnBtn.hidden = false;
+    }
+
+    function hideReturn() {
+      returnBtn.setAttribute("hidden", "");
+      returnBtn.hidden = true;
+    }
+
+    function saveReadingScroll() {
+      sessionStorage.setItem(PM_RETURN_READING_KEY, String(window.scrollY));
+    }
+
+    document.querySelectorAll('a[href="#request"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        saveReadingScroll();
+        window.setTimeout(showReturn, 500);
+      });
+    });
+
+    window.addEventListener("hashchange", function () {
+      if (window.location.hash === "#request") {
+        window.setTimeout(showReturn, 500);
+      }
+    });
+
+    returnBtn.addEventListener("click", function () {
+      var raw = sessionStorage.getItem(PM_RETURN_READING_KEY);
+      sessionStorage.removeItem(PM_RETURN_READING_KEY);
+      hideReturn();
+      if (raw === null || raw === "") return;
+      var y = parseFloat(raw, 10);
+      if (isNaN(y)) return;
+      var instant = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: Math.max(0, y), behavior: instant ? "auto" : "smooth" });
+    });
+
+    if (window.location.hash === "#request") {
+      window.setTimeout(showReturn, 500);
+    }
+  }
+
+  initReturnToReading();
+
   /* Форма заявки -> Netlify Function -> Telegram bot */
   var requestForm = document.getElementById("request-form");
   var requestError = document.getElementById("request-form-error");
@@ -396,6 +476,11 @@
           alert("Заявка отправлена");
           window.open(messengerUrl, "_blank", "noopener,noreferrer");
           requestForm.reset();
+          var returnBtn = document.getElementById("return-to-reading");
+          if (returnBtn && sessionStorage.getItem(PM_RETURN_READING_KEY)) {
+            returnBtn.removeAttribute("hidden");
+            returnBtn.hidden = false;
+          }
         })
         .catch(function () {
           alert("Ошибка отправки. Напишите в Telegram или ВКонтакте");

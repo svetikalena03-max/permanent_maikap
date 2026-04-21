@@ -1957,6 +1957,47 @@ body.has-custom-cursor [role="button"] {
   }
 }
 
+.return-to-reading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0.35rem auto 0.85rem;
+  padding: 0.72rem 1rem;
+  min-height: 2.75rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--graphite);
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset;
+}
+
+.return-to-reading:hover {
+  color: var(--burgundy-deep);
+  border-color: rgba(107, 42, 56, 0.28);
+  background: rgba(107, 42, 56, 0.06);
+}
+
+.return-to-reading:focus-visible {
+  outline: 2px solid var(--burgundy-soft);
+  outline-offset: 3px;
+}
+
+.return-to-reading[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 480px) {
+  .return-to-reading {
+    width: auto;
+    min-width: 220px;
+    margin-inline: auto;
+  }
+}
+
 .request-form-note {
   margin: 0;
   font-size: 0.82rem;
