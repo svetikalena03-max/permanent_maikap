@@ -26,7 +26,7 @@
     if (e.persisted) scrollToTopHard();
   });
 
-  var PM_RETURN_READING_KEY = "pm_return_reading_y";
+  var PREVIOUS_SCROLL_POSITION_KEY = "previousScrollPosition";
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var mobileHero = window.matchMedia("(max-width: 768px)").matches;
@@ -374,7 +374,7 @@
     if (!returnBtn) return;
 
     function showReturn() {
-      var raw = sessionStorage.getItem(PM_RETURN_READING_KEY);
+      var raw = sessionStorage.getItem(PREVIOUS_SCROLL_POSITION_KEY);
       if (raw === null || raw === "") return;
       var y = parseFloat(raw, 10);
       if (isNaN(y)) return;
@@ -388,7 +388,7 @@
     }
 
     function saveReadingScroll() {
-      sessionStorage.setItem(PM_RETURN_READING_KEY, String(window.scrollY));
+      sessionStorage.setItem(PREVIOUS_SCROLL_POSITION_KEY, String(window.scrollY));
     }
 
     document.querySelectorAll('a[href="#request"]').forEach(function (link) {
@@ -405,8 +405,8 @@
     });
 
     returnBtn.addEventListener("click", function () {
-      var raw = sessionStorage.getItem(PM_RETURN_READING_KEY);
-      sessionStorage.removeItem(PM_RETURN_READING_KEY);
+      var raw = sessionStorage.getItem(PREVIOUS_SCROLL_POSITION_KEY);
+      sessionStorage.removeItem(PREVIOUS_SCROLL_POSITION_KEY);
       hideReturn();
       if (raw === null || raw === "") return;
       var y = parseFloat(raw, 10);
@@ -477,7 +477,7 @@
           window.open(messengerUrl, "_blank", "noopener,noreferrer");
           requestForm.reset();
           var returnBtn = document.getElementById("return-to-reading");
-          if (returnBtn && sessionStorage.getItem(PM_RETURN_READING_KEY)) {
+          if (returnBtn && sessionStorage.getItem(PREVIOUS_SCROLL_POSITION_KEY)) {
             returnBtn.removeAttribute("hidden");
             returnBtn.hidden = false;
           }
